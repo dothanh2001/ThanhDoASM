@@ -3,7 +3,7 @@ const app = express()
 
 const {ObjectId,MongoClient} = require('mongodb');
 const url = "mongodb+srv://congthanh:shin1102@cluster0.j8cie.mongodb.net/test";
-
+//const url = 'mongodb://localhost:27017S'
 async function getDB() {
     const client = await MongoClient.connect(url);
     const dbo = client.db("ThanhDoDB");
@@ -15,7 +15,7 @@ app.use(express.static('public'))
 
 app.post('/add',async(req,res)=>{
 
-       const idInput = req.body.txtID;
+      // const idInput = req.body.txtID;
        const nameInput = req.body.txtName;
        const priceInput = req.body.txtPrice;
        const newProduct = {Name: nameInput, Price : priceInput}
@@ -37,15 +37,31 @@ app.get('/',async (req,res)=>{
     const dbo = client.db("ThanhDoDB")      
     const allProducts = await dbo.collection("products").find({}).toArray();
     res.render('index',{data:allProducts})
-    return dbo;
+   // return dbo;
 })
 
 app.get('/edit', async (req, res) => {
-    const id = req.query.id;
-
-    const s = await getProductById(id);
-    res.render("edit", { product: s });
+    const idInput = req.query.id;
+    const search = await getProductById(idInput);
+    res.render('edit', {products: search});
 })
+
+app.post('/update', async (req, res) => {
+    const id = req.body.id;
+    const nameInput = req.body.txtName
+    const priceInput = req.body.txtPrice
+    await updateProductById(id, nameInput,priceInput);
+    res.redirect('/');
+})
+
+async function getProductById(idInput){
+const dbo= await getDB()
+return dbo.collection("products").findOne({_id:ObjectId(idInput)})
+}
+async function updateProductById(id, nameInput, priceInput){
+const dbo= await getDB()
+dbo.collection("products").updateOne({_id:ObjectId(id)}, {$set: {Name: nameInput, Price: priceInput}})
+}
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT)

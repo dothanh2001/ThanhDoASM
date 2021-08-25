@@ -9,12 +9,12 @@
 <body>
     <h2>Edit Product</h2>
     <form action="/update" method="post">
-        <input type="hidden" name="txtId" value="{{product._id}}">
-         Name <input type="text" name="txtName" value="{{product.name}}">
+        <input type="hidden" name="id" value="{{products._id}}">
+         Name <input type="text" name="txtName" value="{{products.Name}}">
         <br>
-        Price <input type="text" name="txtPrice" value="{{product.price}}">
+        Price <input type="text" name="txtPrice" value="{{products.Price}}">
         <br>
-        <input type="submit" value="Update Product">
+        <input type="submit" value="Update">
     </form>
 </body>
 </html>

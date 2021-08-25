@@ -63,8 +63,8 @@
 <section>
 <h1 ><center>Add New Product</center></h1>
 <center><form action="/add" method="POST">     
-       ID <input type="text" name="txtID">
-       <br>
+       {{!-- ID <input type="text" name="txtID">
+       <br> --}}
       Name <input type="text" name = "txtName">
       <br>     
       Price <input type="text" name="txtPrice">
@@ -82,7 +82,7 @@
   </tr>
 {{#each data}}
   <tr> 
-    <td><center>{{ID}}</center> </td>
+    <td><center>{{_id}}</center> </td>
     <td><center>{{Name}}</center> </td>
     <td><center>{{Price}}$</center></td>
     <td><center><a href="/delete?id={{_id}}">Delete</a></center></td>
