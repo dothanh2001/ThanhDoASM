@@ -4,6 +4,11 @@ const app = express()
 const {ObjectId,MongoClient} = require('mongodb');
 const url = "mongodb+srv://congthanh:shin1102@cluster0.j8cie.mongodb.net/test";
 
+async function getDB() {
+    const client = await MongoClient.connect(url);
+    const dbo = client.db("ThanhDoDB");
+    return dbo;
+}
 app.set('view engine', 'hbs')
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
