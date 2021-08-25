@@ -2,7 +2,7 @@ const express = require('express');
 const app = express()
 
 const {ObjectId,MongoClient} = require('mongodb');
-const url = "mongodb+srv://congthanh:shin1102@cluster0.j8cie.mongodb.net/test";
+const url = "mongodb+srv://congthanh:shin1102@cluster0.j8cie.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 //const url = 'mongodb://localhost:27017S'
 async function getDB() {
     const client = await MongoClient.connect(url);
