@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+   .header-nav{
+       font-size: 1.25em;
+       background-color: black;
+       font-family:	'Copperplate', fantasy;
+       color:#DE711F;
+       display:block;
+       padding: 0 9px;
+       text-decoration: none;
+       text-align: center;
+       overflow: hidden;
+       margin: auto;
+       letter-spacing: 5px;
+         }
+   .header-nav a{
+      font-size: 1.25em;
+       background-color: black;
+       color:#DE711F;
+       padding: 20px 16px 8px 8px;
+       text-align: center;
+       text-decoration: none;
+       margin: auto;
+       font-weight: bold;
+   }
+   .header-nav a:hover{
+      background-color: #DE711F;
+       color:white ;
+       padding: 20px 16px 8px 8px;
+   }
+   body{
+       background-color:white;
+   }
+   
+  </style>
+</head>
+<header>
+    <div class="header-nav">
+        <a href="/">SALE</a>
+        <a href="/">CATEGORY</a>
+        <a href="/">BRAND</a>
+        <a href="/">MEMBERSHIP CARD</a>
+        <a href="/">AGE</a>
+    </div>
+    <center><img src="https://wallpaperaccess.com/full/1343405.jpg" style="width: 600px; height:300px; float: right; margin-top: 20px" ></center>
+</header>
+<body>
+<section>
+<h1 ><center>Add New Product</center></h1>
+<center><form action="/add" method="POST">     
+       ID <input type="text" name="txtID">
+       <br>
+      Name <input type="text" name = "txtName">
+      <br>     
+      Price <input type="text" name="txtPrice">
+      <br>
+      <input type="submit" value="Add Product">     
+       </form> 
+       <br>
+<table border="3" class="table" style="width: 500px; height:100px;">
+  <tr style="margin-left: 500px ;">
+    <th>ID</th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Delete</th>
+    <th>Update</th>
+  </tr>
+{{#each data}}
+  <tr> 
+    <td><center>{{ID}}</center> </td>
+    <td><center>{{Name}}</center> </td>
+    <td><center>{{Price}}$</center></td>
+    <td><center><a href="/delete?id={{_id}}">Delete</a></center></td>
+    <td><center><a href="/edit?id={{_id}}">Edit</a></center></td>
+  </tr>
+{{/each}}</center>
+</section>
+
+</body>
+</html>
