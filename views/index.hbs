@@ -44,7 +44,12 @@
        padding: 20px 16px 8px 8px;
    }
    body{
-       background-color:white;
+       
+       justify-content: flex-end;
+       align-items: center;
+       min-height: 10vh;
+       flex-direction: column;
+       background: url(https://i.pinimg.com/originals/da/97/dd/da97ddcee4f2e1dc524d38589c765ed8.png);
    }
    
   </style>
@@ -57,7 +62,7 @@
         <a href="/">MEMBERSHIP CARD</a>
         <a href="/">AGE</a>
     </div>
-    <center><img src="https://wallpaperaccess.com/full/1343405.jpg" style="width: 600px; height:300px; float: right; margin-top: 20px" ></center>
+    <center><img src="https://wallpaperaccess.com/full/1343405.jpg" style="width: 550px; height:300px; float: right; margin-top: 20px" ></center>
 </header>
 <body>
 <section>
@@ -84,12 +89,10 @@
   <tr> 
     <td><center>{{_id}}</center> </td>
     <td><center>{{Name}}</center> </td>
-    <td><center>{{Price}}$</center></td>
+    <td><center>{{Price}}</center></td>
     <td><center><a href="/delete?id={{_id}}">Delete</a></center></td>
     <td><center><a href="/edit?id={{_id}}">Edit</a></center></td>
   </tr>
 {{/each}}</center>
-</section>
-
 </body>
 </html>

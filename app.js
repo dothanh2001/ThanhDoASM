@@ -14,10 +14,12 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
 
 app.post('/add',async(req,res)=>{
-
-      // const idInput = req.body.txtID;
        const nameInput = req.body.txtName;
        const priceInput = req.body.txtPrice;
+       if (priceInput %2 != 0){
+           res.render("index",{errorMsg:'gia nhap vao phai la so chan'})
+           return;
+       }
        const newProduct = {Name: nameInput, Price : priceInput}
        const client = await MongoClient.connect(url);
        const dbo = client.db("ThanhDoDB");
