@@ -16,11 +16,13 @@ app.use(express.static('public'))
 app.post('/add',async(req,res)=>{
        const nameInput = req.body.txtName;
        const priceInput = req.body.txtPrice;
-       const newProduct = {Name: nameInput, Price : priceInput}
+       const descriptionInput = req.body.txtDescription;
+       const newProduct = {Name: nameInput, Price : priceInput, Description: descriptionInput.slice(0,10)}
        const client = await MongoClient.connect(url);
        const dbo = client.db("ThanhDoDB");
-       await dbo.collection("products").insertOne(newProduct);
-       res.redirect("/");
+        await dbo.collection("products").insertOne(newProduct);
+        res.redirect("/");
+       
 })
 app.get('/delete',async (req,res)=>{
     const id  =req.query.id;
